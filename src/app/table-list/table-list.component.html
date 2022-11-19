@@ -6,7 +6,8 @@
                   <div class="card-header card-header-danger">
                       <h4 class="card-title">{{tableName}}</h4>
                       <p class="card-category"> Populates the list of users</p>
-                      <!-- <button type="button" class="btn btn-success btn-lg pull-right" (click)="addUser()">Add User</button> -->
+                      <button type="button" class="btn btn-success btn-lg pull-right" (click)="addUser()" [disabled]="showForm">Add User</button>
+                      <app-add-edit-user *ngIf="showForm" [id]="id" (newUserAdded)="onRecieve($event)" [user]="eUser"></app-add-edit-user>
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
@@ -22,8 +23,8 @@
                                   <tr *ngFor="let user of users">
                                       <td>{{user.id}}</td>
                                       <td>{{user.name}}</td>
-                                      <td>{{user.country}}</td>
-                                      <td>{{user.city}}</td>
+                                      <td>{{user.country | uppercase}}</td>
+                                      <td>{{user.city | uppercase}}</td>
                                       <td class="text-primary">{{user.salary | currency}}</td>
                                       <td><i class="fa fa-edit fa-2x" (click)="editUser(user)"></i></td>
                                       <td><i class="fa fa-trash-o fa-2x" (click)="deleteUser(user.id)"></i></td>
@@ -172,3 +173,4 @@
       </div>
   </div>
 </div>
+

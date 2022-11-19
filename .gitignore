@@ -30,6 +30,7 @@
 /coverage
 /libpeerconnection.log
 npm-debug.log
+./db.json
 testem.log
 /typings
 /.angular
@@ -41,3 +42,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# db.json

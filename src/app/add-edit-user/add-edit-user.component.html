@@ -1,0 +1,33 @@
+<div class="main-content">
+    <div class="card">
+        <div class="card-header card-header-danger">
+            <h4 class="card-title">Add Edit Elements Form</h4>
+            <p class="card-category">Created to add edit elements</p>
+        </div>
+        <div class="card-body">
+            <form (submit)="onSubmit(myForm)" #myForm="ngForm">
+                <div class="form-group">
+                    <label for="fname">Fistname</label><br/>
+                    <input type="text" id="fname" name="firstname" placeholder="Type firstname..." value="firstname" class="col-md-6" [(ngModel)]="firstname"><br/>
+                                
+                    <label for="country">Country</label><br/>
+                    <select name="country" id="country" class="col-md-6" value="country"  [(ngModel)]="country">
+                        <option value="usa">USA</option>
+                        <option value="egypt">EGYPT</option>
+                        <option value="india">INDIA</option>
+                    </select><br/>
+
+                    <label for="city">City</label><br/>
+                    <input type="text" id="city" name="city" placeholder="Type city..." class="col-md-6" [(ngModel)]="city"><br/>
+
+                    <label for="salary">Salary</label><br/>
+                    <input type="text" id="salary" name="salary" placeholder="Type salary..." class="col-md-6" [(ngModel)]="salary"><br/>
+
+                    <button type="submit" class="btn btn-primary col-md-6">Submit</button>
+                </div>
+            </form>                       
+        </div>
+    </div>
+</div>
+
+
