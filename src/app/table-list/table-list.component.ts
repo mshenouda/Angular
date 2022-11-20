@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import * as e from 'express';
 import { content_v2_1 } from 'googleapis';
 import {ApiService} from '../services/api.service';
 import {User} from '../user';
-import { AddEditUserComponent } from 'app/add-edit-user/add-edit-user.component';
-import { SELECT_PANEL_INDENT_PADDING_X } from '@angular/material/select/select';
 
 @Component({
   selector: 'app-table-list',
@@ -16,9 +15,7 @@ export class TableListComponent implements OnInit {
   id: number;
   users: User[] = [];
   showForm: boolean = false;
-  eUser: User;
-  addEnable: boolean = false;
-  editEnable: boolean = false;
+  user: User;
 
   constructor(private apiservice: ApiService) { 
   }
@@ -46,55 +43,43 @@ export class TableListComponent implements OnInit {
   onRecieve(data: User) {
     this.showForm = false;
     let user = {...data};
-    if(this.editEnable) {
       console.log(user);
-      this.editEnable = false;
+    if (this.user)
       this.apiservice.editUser(this.id, user).subscribe();
-    } 
-    
-    if(this.addEnable) {
-      this.addEnable = false;
+    else { 
       this.apiservice.addUser(user).subscribe({
         next: (x) => this.users.push(x),
         error: (err: any) => console.log('Failed to add new user'),
         complete: ()=>console.log("Successfully added new user")});
     }
-
-    //callback to maintain json.db data sync 
-    setTimeout(()=>this.getUsers(), 200);
+    //callback to maintain json.db data sync
+    setTimeout(()=> this.getUsers(), 200);
   }
+ 
+  
 
   addUser() {
     this.showForm = true;
-    if (this.users.length > 0) {
-      this.id = this.users[this.users.length-1].id + 1;
-    } else {
-      this.id = 1;
-    }
-    this.addEnable = true;   
+    this.id = (this.users.length > 0) ? this.users[this.users.length-1].id + 1: 1;
+    this.user = null;
   }
 
   editUser(data: User) {
     this.showForm = true;
     let index = this.users.indexOf(data);
-    this.eUser = this.users[index];
-    this.id = this.eUser.id;
-    this.editEnable = true;
-    this.addEnable = false; 
+    this.user = this.users[index];
+    this.id = this.user.id;
   }
   
   deleteUser(id: number) {
     if (this.users.length>0) {
-      this.users= this.users.filter(x=>x.id != id);
-      console.log(this.users);
+      this.users= this.users.filter(user=>user.id != id);
+      if (this.users.length == 0) {
+        console.log("users now", this.users);  
+        this.user = null;
+      }
       this.apiservice.deleteUser(id).subscribe();
     } 
-    else {
-      console.log("Can't removed from empty list")
-      this.addEnable = false;
-      this.editEnable = false;
-    } 
   }
-
 }
 
