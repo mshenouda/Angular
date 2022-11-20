@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef} from '@angular/core';
 import * as Chartist from 'chartist';
 
 @Component({
@@ -9,6 +9,23 @@ import * as Chartist from 'chartist';
 export class DashboardComponent implements OnInit {
 
   constructor() { }
+  bugs = [
+    'Sign contract for "What are conference organizers afraid of?',
+    "Lines From Great Russian Literature? Or E-mails From My Boss?",
+    "Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit",
+    "Create 4 Invisible User Experiences you Never Knew About"];
+  
+  websites = ["Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit",
+            "Sign contract for 'What are conference organizers afraid of?'"];
+
+  servers = ["Lines From Great Russian Literature? Or E-mails From My Boss?", 
+  "Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit", 'Sign contract for "What are conference organizers afraid of?"'];          
+
+  closeBugsFlags = this.bugs.map(x=>false);
+  closeWebsitesFlags = this.websites.map(x=>false);
+  closeServersFlags = this.servers.map(x=>false);
+  editBugFlag: string=""; 
+  
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -147,4 +164,21 @@ export class DashboardComponent implements OnInit {
       this.startAnimationForBarChart(websiteViewsChart);
   }
 
+  closeBugs(i: number, bug: string){
+    this.closeBugsFlags[i] = true;
+  }
+  
+  editBugs(i: number, bug: string) {
+    this.editBugFlag = this.bugs[i].toLocaleUpperCase();
+    console.log(i, this.editBugFlag);
+  }
+
+  closeWebsites(i: number, bug: string){
+    this.closeWebsitesFlags[i] = true;
+  }
+
+  closeServers(i: number, bug: string){
+    this.closeServersFlags[i] = true;
+  }
 }
+
