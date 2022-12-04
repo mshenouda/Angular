@@ -1,0 +1,3 @@
+<mat-select [(ngModel)]="selectedValue" name="food">
+    <mat-option *ngFor="let food of foods" [value]="food.value" (click)="selectValue()">{{food.viewValue}}</mat-option>
+</mat-select>

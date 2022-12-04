@@ -1,5 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -24,6 +24,7 @@ import {ApiService} from '../app/services/api.service';
     AppComponent,
     AdminLayoutComponent,
   ],
+
   providers: [ApiService],
   bootstrap: [AppComponent]
 })

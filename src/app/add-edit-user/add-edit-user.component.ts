@@ -17,13 +17,13 @@ export class AddEditUserComponent implements OnInit {
   firstname: string="";
   country: string="";
   city: string="";
-  salary: number=0;
+  salary: string="";
   ngOnInit(): void {
     if (this.user) {
       this.firstname = this.user.name;
       this.country = this.user.country;
       this.city = this.user.city;
-      this.salary = this.user.salary;  
+      this.salary = this.user.salary.toString();  
     } 
   }
   
@@ -36,8 +36,8 @@ export class AddEditUserComponent implements OnInit {
   //   salary: new FormControl("", Validators.required),
   // });
   
-  newUser(firstname: string, country: string, city: string, salary: number) {
-    let tmpUser = {"id": this.id, "name": firstname, "country": country, "city": city, "salary": salary};
+  newUser(firstname: string, country: string, city: string, salary: string) {
+    let tmpUser = {"id": this.id, "name": firstname, "country": country, "city": city, "salary": Number(salary)};
     this.newUserAdded.emit(tmpUser);
   }
 

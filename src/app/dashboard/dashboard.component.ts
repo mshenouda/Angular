@@ -1,4 +1,6 @@
-import { Component, OnInit, ElementRef} from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild} from '@angular/core';
+import {SelectComponent} from '../select/select.component';
+
 import * as Chartist from 'chartist';
 
 @Component({
@@ -8,7 +10,10 @@ import * as Chartist from 'chartist';
 })
 export class DashboardComponent implements OnInit {
 
+  @ViewChild(SelectComponent, {static: true})
+  selector: SelectComponent;
   constructor() { }
+ 
   bugs = [
     'Sign contract for "What are conference organizers afraid of?',
     "Lines From Great Russian Literature? Or E-mails From My Boss?",
@@ -25,7 +30,9 @@ export class DashboardComponent implements OnInit {
   closeWebsitesFlags = this.websites.map(x=>false);
   closeServersFlags = this.servers.map(x=>false);
   editBugFlag: string=""; 
-  
+  items=[1, 2, 3, 4];
+  days= ['Item','M', 'T', 'W', 'Th', 'F', 'S', 'Su'];
+
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -86,10 +93,8 @@ export class DashboardComponent implements OnInit {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {
-          labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-          series: [
-              [12, 17, 7, 17, 23, 18, 38]
-          ]
+          labels: ['M', 'T', 'W', 'Th', 'F', 'S', 'Su'],
+          series: [[20, 1, 15, 29, 30, 12, 26]]
       };
 
      const optionsDailySalesChart: any = {

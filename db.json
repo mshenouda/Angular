@@ -1,11 +1,18 @@
 {
   "users": [
     {
+      "id": 1,
+      "name": "John",
+      "country": "egypt",
+      "city": "Victoria",
+      "salary": 787
+    },
+    {
       "id": 2,
-      "name": "Shenouda",
-      "country": "usa",
-      "city": "Kerla",
-      "salary": "500"
+      "name": "John",
+      "country": "egypt",
+      "city": "Victoria",
+      "salary": 3000
     }
   ]
 }

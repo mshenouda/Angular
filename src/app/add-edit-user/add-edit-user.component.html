@@ -8,20 +8,22 @@
             <form (submit)="onSubmit(myForm)" #myForm="ngForm">
                 <div class="form-group">
                     <label for="fname">Fistname</label><br/>
-                    <input type="text" id="fname" name="firstname" placeholder="Type firstname..." value="firstname" class="col-md-6" [(ngModel)]="firstname"><br/>
-                                
+                    <input type="text" id="fname" name="firstname" placeholder="Type firstname..." value="firstname" class="col-md-6" [(ngModel)]="firstname" required #fname="ngModel"><br/>
+                    <small *ngIf="fname.touched && fname.invalid">You must type a valid firstname</small>
+                    <div><span *ndIf="firstname">You entered {{firstname}}</span></div>
+
                     <label for="country">Country</label><br/>
-                    <select name="country" id="country" class="col-md-6" value="country"  [(ngModel)]="country">
+                    <select name="country" id="country" class="col-md-6" value="country"  [(ngModel)]="country" required>
                         <option value="usa">USA</option>
                         <option value="egypt">EGYPT</option>
                         <option value="india">INDIA</option>
                     </select><br/>
 
                     <label for="city">City</label><br/>
-                    <input type="text" id="city" name="city" placeholder="Type city..." class="col-md-6" [(ngModel)]="city"><br/>
+                    <input type="text" id="city" name="city" placeholder="Type city..." class="col-md-6" [(ngModel)]="city" required><br/>
 
                     <label for="salary">Salary</label><br/>
-                    <input type="text" id="salary" name="salary" placeholder="Type salary..." class="col-md-6" [(ngModel)]="salary"><br/>
+                    <input type="text" id="salary" name="salary" placeholder="Type salary..." class="col-md-6" [(ngModel)]="salary" required><br/>
 
                     <button type="submit" class="btn btn-primary col-md-6">Submit</button>
                 </div>
