@@ -1,0 +1,7 @@
+<mat-label class="mat-label" disabled>{{label}}</mat-label>
+<mat-select>
+    <mat-option class="mat-option" *ngFor="let task of tasks" [value]="task" (blur)="onTaskChange(task)" [task]="task">
+        {{employee}}
+    </mat-option>
+</mat-select>
+

@@ -244,20 +244,39 @@
                       <p class="card-category">New employees on 15th September, 2016</p>
                   </div>
                   <div class="card-body table-responsive">
-                    <div></div>
                        <table class="table table-hover">
-                          <thead class="text-warning">
+                          <!-- <thead class="text-warning">
                               <th *ngFor="let day of days; index as i">{{day}}</th>
-                          </thead>
+                          </thead> -->
                           <tbody>
-                            <tr *ngFor="let item of items;">
-                                <td *ngFor="let day of days; index as i">
-                                    <span *ngIf="i === 0">{{item}}</span>
-                                    <span *ngIf="i > 0"><app-select></app-select></span>
+                            <tr>
+                                <td *ngFor="let day of days; index as j">
+                                    <span *ngIf="j === 0">{{item}}</span>
+                                    <span *ngIf="j > 0"><app-select [label]="day" [day]="day" (selectOutDay)="onRecieve($event)"></app-select></span>
                                 </td>
+                                <button mat-stroked-button class="btn-success" (click)="onDailySalesSubmit()">Submit</button>
+                            </tr>
+
+                            <tr>
+                                <td *ngFor="let month of months; index as j">
+                                    <span *ngIf="j === 0">{{item}}</span>
+                                    <span *ngIf="j > 0"><app-select [label]="month" [month]="month" (selectOutDay)="onRecieve($event)"></app-select></span>
+                                </td>
+                                <button mat-stroked-button class="btn-warning" (click)="onEmailSubscriptionSubmit()">Submit</button>
+                            </tr>
+                            
+                            <tr>
+                                <td *ngFor="let task of tasks; index as j">
+                                    <span *ngIf="j === 0">{{item}}</span>
+                                    <span *ngIf="j > 0"><app-select [label]="task" [task]="task" (selectOutDay)="onRecieve($event)"></app-select></span>
+                                </td>
+                                <button mat-stroked-button class="btn-danger" (click)="onCompletedTasksSubmit()">Submit</button>
                             </tr>
                           </tbody>
                       </table>
+                      <div class="card-footer">
+                        <small class="submitError" *ngIf="errorSubmit">You can't submit unless you chose values for the entire row</small>
+                      </div>
                   </div>
               </div>
           </div>

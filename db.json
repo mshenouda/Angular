@@ -5,14 +5,110 @@
       "name": "John",
       "country": "egypt",
       "city": "Victoria",
-      "salary": 787
+      "salary": 505
+    }
+  ],
+  "employees": [
+    {
+      "day": "M",
+      "values": [
+        12,
+        13,
+        40,
+        15,
+        96,
+        89
+      ]
     },
     {
-      "id": 2,
-      "name": "John",
-      "country": "egypt",
-      "city": "Victoria",
-      "salary": 3000
+      "day": "T",
+      "values": [
+        12,
+        13,
+        40,
+        15,
+        96,
+        89
+      ]
+    },
+    {
+      "day": "W",
+      "values": [
+        12,
+        13,
+        40,
+        15,
+        96,
+        89
+      ]
+    },
+    {
+      "day": "Th",
+      "values": [
+        12,
+        13,
+        40,
+        15,
+        96,
+        89
+      ]
+    },
+    {
+      "day": "F",
+      "values": [
+        12,
+        13,
+        40,
+        15,
+        96,
+        89
+      ]
+    },
+    {
+      "day": "S",
+      "values": [
+        12,
+        13,
+        40,
+        15,
+        96,
+        89
+      ]
+    },
+    {
+      "day": "Su",
+      "values": [
+        12,
+        13,
+        40,
+        15,
+        96,
+        89
+      ]
     }
+  ],
+  "emails": [
+    {"month": "J", "count": 542}, 
+    {"month": "F", "count": 443},
+    {"month": "M", "count": 320},
+    {"month": "A", "count": 443},
+    {"month": "Y", "count": 780},
+    {"month": "N", "count": 553},
+    {"month": "L", "count": 453},
+    {"month": "U", "count": 326},
+    {"month": "S", "count": 434},
+    {"month": "O", "count": 568},
+    {"month": "N", "count": 610},
+    {"month": "D", "count": 756}
+  ],
+  "tasks": [
+    {"label": "12p", "value": 230},
+    {"label": "3p", "value": 750},
+    {"label": "6p", "value": 450},
+    {"label": "9p", "value": 300},
+    {"label": "12a", "value": 280},
+    {"label": "3a", "value": 280},
+    {"label": "6a", "value": 280},
+    {"label": "9a", "value": 240}
   ]
 }

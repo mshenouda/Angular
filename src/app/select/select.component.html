@@ -1,3 +1,6 @@
-<mat-select [(ngModel)]="selectedValue" name="food">
-    <mat-option *ngFor="let food of foods" [value]="food.value" (click)="selectValue()">{{food.viewValue}}</mat-option>
+<mat-label class="mat-label" disabled>{{label}}</mat-label>
+<mat-select>
+    <mat-option class="mat-option" *ngFor="let employee of employees" [value]="employee" (blur)="onDayChange(employee)" [day]="day">
+        {{employee}}
+    </mat-option>
 </mat-select>

@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import {ApiService} from '../app/services/api.service';
 
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,

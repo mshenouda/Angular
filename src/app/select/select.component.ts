@@ -1,45 +1,55 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
-
-interface Car {
-  value: string;
-  viewValue: string;
-}
-
+import { Component, OnInit, Input, Output, ElementRef, ViewChild, EventEmitter} from '@angular/core';
+import {ApiService } from '../services/api.service';
+import { Employee } from 'app/employee';
 
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss']
 })
-export class SelectComponent implements OnChanges {
+export class SelectComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
-  ngOnChanges(): void {}
+  constructor(private apiservice: ApiService) { }
+  @Input() label: string="";
+  @Input() day: string="";
+  @Input() month: string="";
+  @Input() task: string="";
+  @Output() outDay: EventEmitter<any> = new EventEmitter<any>();
+  @Output() outMonth: EventEmitter<any> = new EventEmitter<any>();
+  @Output() outTask: EventEmitter<any> = new EventEmitter<any>();
   
-  selectedValue: string;
-  selectedCar: string;
+  employees: number[]=[];
+  value: number=0;
+  
+  ngOnInit(): void {
+    this.getEmployees(this.day);
+  }
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
+  getEmployees(day: string): any {
+    // console.log("Day", day);
+    this.apiservice.getEmployees(day).subscribe({
+      next: (employee)=> {
+        //console.log(employee[0].stats);
+        this.employees = [...employee[0].values];
+      },
+      error: (err: any)=> {console.error(err)},
+      complete: () => console.log(`Fetched ${this.employees.length} employees for day ${day}`)  
+    });
+  }
 
-  cars: Car[] = [
-    {value: 'volvo', viewValue: 'Volvo'},
-    {value: 'saab', viewValue: 'Saab'},
-    {value: 'mercedes', viewValue: 'Mercedes'},
-  ];
+  onDayChange(value: number): void {
+    let outDay = {[this.day]: value};
+    this.outDay.emit(outDay);
+  }
 
-  selectValue() {
-    console.log(this.selectedValue);
+  onMonthChange(value: number): void {
+    let outMonth = {[this.day]: value};
+    this.outMonth.emit(outMonth);
+  }
+
+  onTaskChange(value: number): void {
+    let outTask = {[this.day]: value};
+    this.outMonth.emit(outTask);
   }
 }

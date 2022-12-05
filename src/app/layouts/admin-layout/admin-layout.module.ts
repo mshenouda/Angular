@@ -19,6 +19,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {SelectComponent} from '../../select/select.component';
+import { SelectEmailComponent } from '../../select-email/select-email.component';
+import { SelectTaskComponent } from '../../select-task/select-task.component';
 
 @NgModule({
   imports: [
@@ -43,7 +45,9 @@ import {SelectComponent} from '../../select/select.component';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    SelectComponent
+    SelectComponent,
+    SelectTaskComponent,
+    SelectEmailComponent,
   ]
 })
 

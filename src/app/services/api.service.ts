@@ -3,6 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, from, of } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { User } from '../user';
+import {Employee} from '../employee';
+import {MonthEmail} from '../month-email';
+import {Task} from '../task';
+
 
 @Injectable()
 export class ApiService {
@@ -23,7 +27,6 @@ export class ApiService {
     addUser(user: User): Observable<User> {
         return this.http.post<User>("http://localhost:3000/users/", user);
     }
-
     //DELETE METHOD
     deleteUser(id: Number): Observable<User> {
         let url = `http://localhost:3000/users/${id}`;
@@ -34,4 +37,19 @@ export class ApiService {
     editUser(id: number, user: User): Observable<User> {
         return this.http.put<User>(`http://localhost:3000/users/${id}`, user);
     }
+
+    //GET EMPLOYEES
+    getEmployees(day: string): Observable<Employee> {  
+        return this.http.get<Employee>(`http://localhost:3000/employees?day=${day}`);
+    }
+
+    //GET EMAILS
+    getEmails(month: string): Observable<MonthEmail> {
+        return this.http.get<MonthEmail>(`http://localhost:3000/emails?month/${month}`);
+    }
+    
+    //GET Tasks
+    getTasks(label: string): Observable<Task> {
+        return this.http.get<Task>(`http://localhost:3000/tasks?label/${label}`);
+    }   
 }
